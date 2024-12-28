@@ -20,7 +20,7 @@ class PLZ_PVModel:
         self.conn = sqlite3.connect('PLZ.db')
 
     def create(self, plz, pv):
-        query = f'insert into todo(PLZ,PV) values("{plz}","{pv}")'
+        query = f'insert into PLZ(PLZ,PV) values("{plz}","{pv}")'
         result = self.conn.execute(query)
         self.conn.commit()
         return f"Ok {result.lastrowid}"

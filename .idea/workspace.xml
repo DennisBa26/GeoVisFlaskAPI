@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d715b25-abab-4c9a-b412-3e541fdf893a" name="Changes" comment="added service">
+    <list default="true" id="8d715b25-abab-4c9a-b412-3e541fdf893a" name="Changes" comment="added create service">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plzService.py" beforeDir="false" afterPath="$PROJECT_DIR$/plzService.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +117,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735397972261</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added create service">
+      <option name="closed" value="true" />
+      <created>1735398100252</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1735398100252</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,6 +144,7 @@
     <MESSAGE value="added main" />
     <MESSAGE value="added models+ db" />
     <MESSAGE value="added service" />
-    <option name="LAST_COMMIT_MESSAGE" value="added service" />
+    <MESSAGE value="added create service" />
+    <option name="LAST_COMMIT_MESSAGE" value="added create service" />
   </component>
 </project>
