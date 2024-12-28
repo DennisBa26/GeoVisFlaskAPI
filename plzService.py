@@ -5,3 +5,6 @@ class PLZService:
 
     def create(self, request):
         return self.model.create(request["PLZ"], request["PV"])
+
+    def get_all(self):
+        return self.model.get_all()

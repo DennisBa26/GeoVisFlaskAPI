@@ -23,3 +23,11 @@ class PLZ_PVModel:
         result = self.conn.execute(query)
         self.conn.commit()
         return f"Ok {result.lastrowid}"
+
+    def get_all(self):
+        querry = """
+        SELECT * 
+        FROM PLZ
+        """
+        result = self.conn.execute(querry).fetchall()
+        return result
