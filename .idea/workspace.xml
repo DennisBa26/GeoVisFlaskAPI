@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d715b25-abab-4c9a-b412-3e541fdf893a" name="Changes" comment="added get all">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plzService.py" beforeDir="false" afterPath="$PROJECT_DIR$/plzService.py" afterDir="false" />
-    </list>
+    <list default="true" id="8d715b25-abab-4c9a-b412-3e541fdf893a" name="Changes" comment="added table check to reduce loading time if table exist&#10;and formated json" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,9 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2qqgyhhpx9kEGShdpGGaXBVaelC" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -36,9 +33,15 @@
   "keyToString": {
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "G:/Dennis/GeoVis/FlaskAPI"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Dennis\GeoVis\FlaskAPI" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="FlaskAPI" />
@@ -148,7 +151,55 @@
       <option name="project" value="LOCAL" />
       <updated>1735400034526</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="create with json of all plz">
+      <option name="closed" value="true" />
+      <created>1735400616637</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1735400616637</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added a example for a json for the create request">
+      <option name="closed" value="true" />
+      <created>1735400746384</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735400746384</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added the xml data export">
+      <option name="closed" value="true" />
+      <created>1735421142615</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1735421142615</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added data">
+      <option name="closed" value="true" />
+      <created>1735423324697</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1735423324697</updated>
+    </task>
+    <task id="LOCAL-00013" summary="deleted create and implemented create db with data from data folder at start">
+      <option name="closed" value="true" />
+      <created>1735423415839</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735423415839</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added table check to reduce loading time if table exist&#10;and formated json">
+      <option name="closed" value="true" />
+      <created>1735425422234</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1735425422234</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +221,12 @@
     <MESSAGE value="added create service" />
     <MESSAGE value="fixed create service" />
     <MESSAGE value="added get all" />
-    <option name="LAST_COMMIT_MESSAGE" value="added get all" />
+    <MESSAGE value="create with json of all plz" />
+    <MESSAGE value="added a example for a json for the create request" />
+    <MESSAGE value="added the xml data export" />
+    <MESSAGE value="added data" />
+    <MESSAGE value="deleted create and implemented create db with data from data folder at start" />
+    <MESSAGE value="added table check to reduce loading time if table exist&#10;and formated json" />
+    <option name="LAST_COMMIT_MESSAGE" value="added table check to reduce loading time if table exist&#10;and formated json" />
   </component>
 </project>

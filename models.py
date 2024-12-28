@@ -1,10 +1,20 @@
 import sqlite3
+import xml_json_export
+
+xml_directory = "./data"
 class Schema:
     def __init__(self):
         self.conn = sqlite3.connect('PLZ.db')
-        self.create_plz_table()
+        cursor = self.conn.cursor()
+        cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='PLZ';")
+        if cursor.fetchone():
+            pass
+        else:
+            self.create_plz_table()
+            self.init_from_data()
 
     def create_plz_table(self):
+        print("Create Table...")
         query = """
             CREATE TABLE IF NOT EXISTS "PLZ" (
                 PLZ INTEGER PRIMARY KEY,
@@ -13,16 +23,21 @@ class Schema:
         """
         self.conn.execute(query)
 
+    def init_from_data(self):
+        print("Init data from XML-Files")
+        result=xml_json_export.calculate_bruttoleistung_per_postleitzahl(xml_directory)
+        counter=0
+        for plz,bruttoleistung in sorted(result.items()):
+            query = f'insert into PLZ(PLZ,PV) values("{plz}","{bruttoleistung}") ON CONFLICT (PLZ) DO NOTHING'
+            self.conn.execute(query)
+            counter+=1
+        self.conn.commit()
+        print()
+
 
 class PLZ_PVModel:
     def __init__(self):
         self.conn = sqlite3.connect('PLZ.db')
-
-    def create(self, plz, pv):
-        query = f'insert into PLZ(PLZ,PV) values("{plz}","{pv}") ON CONFLICT (PLZ) DO NOTHING'
-        result = self.conn.execute(query)
-        self.conn.commit()
-        return f"Ok {result.lastrowid}"
 
     def get_all(self):
         querry = """
