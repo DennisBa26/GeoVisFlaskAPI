@@ -7,8 +7,7 @@ class Schema:
     def create_plz_table(self):
         query = """
             CREATE TABLE IF NOT EXISTS "PLZ" (
-                id INTEGER PRIMARY KEY,
-                PLZ INTEGER,
+                PLZ INTEGER PRIMARY KEY,
                 PV INTEGER        
             );
         """
@@ -20,7 +19,7 @@ class PLZ_PVModel:
         self.conn = sqlite3.connect('PLZ.db')
 
     def create(self, plz, pv):
-        query = f'insert into PLZ(PLZ,PV) values("{plz}","{pv}")'
+        query = f'insert into PLZ(PLZ,PV) values("{plz}","{pv}") ON CONFLICT (PLZ) DO NOTHING'
         result = self.conn.execute(query)
         self.conn.commit()
         return f"Ok {result.lastrowid}"

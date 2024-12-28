@@ -5,7 +5,7 @@ from plzService import PLZService
 app = Flask(__name__)
 
 
-@app.route("/create", methods=["POST"])
+@app.route("/", methods=["POST"])
 def createPLZ():
     print(request.get_json())
     return PLZService().create(request.get_json())
