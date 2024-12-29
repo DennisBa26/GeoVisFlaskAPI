@@ -1,9 +1,11 @@
 from flask import Flask,request,jsonify
+from flask_cors import CORS
 from models import Schema
 from plzService import PLZService
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/", methods=["GET"])
