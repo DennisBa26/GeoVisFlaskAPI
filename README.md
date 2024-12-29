@@ -1,4 +1,5 @@
 pip install flask
+
 pip install flask_cors
 
 Entpacke die Daten von https://drive.google.com/file/d/1qWnKoVju7ia5EziF22njRC3WuyTjMegX/view?usp=drive_link in ordner "data" im top level des Projekt Ordners
