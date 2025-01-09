@@ -26,19 +26,12 @@ class Schema:
             with open(timestampFile, 'r') as f:
                 stored_timestamp = float(f.read().strip())
 
-            # Vergleiche den gespeicherten Timestamp mit dem aktuellen
             if latest_mod_time > stored_timestamp:
-                # Wenn das aktuelle Änderungsdatum jünger ist
                 load = True
-                with open(timestampFile, 'w') as f:
-                    f.write(str(latest_mod_time))
+
             else:
-                # Wenn das aktuelle Änderungsdatum nicht jünger ist
                 load = False
         else:
-            #Wenn die Textdatei nicht existiert, speichere den aktuellen Timestamp
-            with open(timestampFile, 'w') as f:
-                f.write(str(latest_mod_time))
             load = True
 
         if load == False:
@@ -46,6 +39,8 @@ class Schema:
         else:
             self.create_plz_table()
             self.init_from_data()
+            with open(timestampFile, 'w') as f:
+                f.write(str(latest_mod_time))
 
     def create_plz_table(self):
         print("Create Table...")
