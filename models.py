@@ -9,25 +9,36 @@ class Schema:
         self.conn = sqlite3.connect('PLZ.db')
         cursor = self.conn.cursor()
         cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='PLZ';")
-        load = False
-        current_timestamp = os.path.getmtime(xml_directory)
+        # Initialisiere die Variable, um das neueste Änderungsdatum zu speichern
+        latest_mod_time = 0
+
+        for file in os.listdir(xml_directory):
+            file_path = os.path.join(xml_directory, file)
+
+            if os.path.isfile(file_path):
+                mod_time = os.path.getmtime(file_path)
+
+                # Wenn das Änderungsdatum aktueller ist als das gespeicherte, aktualisieren
+                if mod_time > latest_mod_time:
+                    latest_mod_time = mod_time
+
         if os.path.exists(timestampFile):
             with open(timestampFile, 'r') as f:
                 stored_timestamp = float(f.read().strip())
 
             # Vergleiche den gespeicherten Timestamp mit dem aktuellen
-            if current_timestamp > stored_timestamp:
+            if latest_mod_time > stored_timestamp:
                 # Wenn das aktuelle Änderungsdatum jünger ist
                 load = True
                 with open(timestampFile, 'w') as f:
-                    f.write(str(current_timestamp))
+                    f.write(str(latest_mod_time))
             else:
                 # Wenn das aktuelle Änderungsdatum nicht jünger ist
                 load = False
         else:
             #Wenn die Textdatei nicht existiert, speichere den aktuellen Timestamp
             with open(timestampFile, 'w') as f:
-                f.write(str(current_timestamp))
+                f.write(str(latest_mod_time))
             load = True
 
         if load == False:
