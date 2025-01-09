@@ -46,6 +46,6 @@ def calculate_bruttoleistung_per_postleitzahl(directory):
                                 bruttoleistung_per_plz[plz.text] += float(leistung)
                             except ValueError:
                                 print(f"Ungültige Bruttoleistung in Datei {filename}: {bruttoleistung.text}")
-        counter+=1
+            counter+=1
 
     return bruttoleistung_per_plz
