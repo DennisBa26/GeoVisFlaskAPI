@@ -1,13 +1,34 @@
+import os
 import sqlite3
 import xml_json_export
 
 xml_directory = "./data"
+timestampFile = "./lastModified"
 class Schema:
     def __init__(self):
         self.conn = sqlite3.connect('PLZ.db')
         cursor = self.conn.cursor()
         cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='PLZ';")
-        if cursor.fetchone():
+        load = False
+        current_timestamp = os.path.getmtime(xml_directory)
+        if os.path.exists(timestampFile):
+            with open(timestampFile, 'r') as f:
+                stored_timestamp = float(f.read().strip())
+
+            # Vergleiche den gespeicherten Timestamp mit dem aktuellen
+            if current_timestamp > stored_timestamp:
+                # Wenn das aktuelle Änderungsdatum jünger ist
+                load = True
+            else:
+                # Wenn das aktuelle Änderungsdatum nicht jünger ist
+                load = False
+        else:
+            #Wenn die Textdatei nicht existiert, speichere den aktuellen Timestamp
+            with open(timestampFile, 'w') as f:
+                f.write(str(current_timestamp))
+            load = True
+
+        if load == False:
             pass
         else:
             self.create_plz_table()
