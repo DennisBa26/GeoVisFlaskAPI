@@ -19,6 +19,8 @@ class Schema:
             if current_timestamp > stored_timestamp:
                 # Wenn das aktuelle Änderungsdatum jünger ist
                 load = True
+                with open(timestampFile, 'w') as f:
+                    f.write(str(current_timestamp))
             else:
                 # Wenn das aktuelle Änderungsdatum nicht jünger ist
                 load = False
