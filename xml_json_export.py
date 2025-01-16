@@ -2,6 +2,7 @@ import os
 import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
+import math
 
 
 def calculate_bruttoleistung_per_postleitzahl(directory):
@@ -41,7 +42,7 @@ def calculate_bruttoleistung_per_postleitzahl(directory):
 
                         if plz is not None and bruttoleistung is not None:
                             try:
-                                leistung = float(bruttoleistung.text)
+                                leistung = math.trunc(float(bruttoleistung.text))
                                 if leistung > 40000:  # Leistung über 40000 kW
                                     user_input = input(f"\nDie Bruttoleistung {leistung} kW, der Anlage {id.text} in {plz.text} aus {filename}, ist größer als 40.000 kW. Möchten Sie diese Leistung akzeptieren? (y/n): ").strip().lower()
                                     if user_input != 'y':
