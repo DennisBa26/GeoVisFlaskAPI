@@ -43,10 +43,10 @@ def calculate_bruttoleistung_per_postleitzahl(directory):
                             try:
                                 leistung = float(bruttoleistung.text)
                                 if leistung > 40000:  # Leistung über 40000 kW
-                                    user_input = input(f"\nDie Bruttoleistung {leistung} kW, der Anlage {id.text} aus File {filename}, ist größer als 40.000 kW. Möchten Sie diese Leistung akzeptieren? (y/n): ").strip().lower()
+                                    user_input = input(f"\nDie Bruttoleistung {leistung} kW, der Anlage {id.text} in {plz.text} aus {filename}, ist größer als 40.000 kW. Möchten Sie diese Leistung akzeptieren? (y/n): ").strip().lower()
                                     if user_input != 'y':
                                         while 1:
-                                            user_input = input(f"Den Wert angepasst eintrage? Ja-> Zahl angeben xxxx.x Nein->n").strip().lower()
+                                            user_input = input(f"Den Wert angepasst eintrage? Ja -> Zahl angeben xxxx.x, Nein -> n: ").strip().lower()
                                             if user_input == 'n':
                                                 print(f"Die Bruttoleistung {leistung} kW wurde verworfen.")
                                                 break  # Überspringe diesen Eintrag
