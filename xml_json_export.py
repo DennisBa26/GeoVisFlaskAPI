@@ -46,7 +46,7 @@ def calculate_bruttoleistung_per_postleitzahl(directory):
                                     user_input = input(f"\nDie Bruttoleistung {leistung} kW, der Anlage {id.text} aus File {filename}, ist größer als 40.000 kW. Möchten Sie diese Leistung akzeptieren? (y/n): ").strip().lower()
                                     if user_input != 'y':
                                         while 1:
-                                            user_input = input(f"Angepasst übernehmen? ('Zahl xxx.xx'/n)").strip().lower()
+                                            user_input = input(f"Den Wert angepasst eintrage? Ja-> Zahl angeben xxxx.x Nein->n").strip().lower()
                                             if user_input == 'n':
                                                 print(f"Die Bruttoleistung {leistung} kW wurde verworfen.")
                                                 break  # Überspringe diesen Eintrag
