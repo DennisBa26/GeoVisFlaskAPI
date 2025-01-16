@@ -34,7 +34,6 @@ class Schema:
         cursor = self.conn.cursor()
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='PLZ';")
         result = cursor.fetchone()
-        self.conn.close()
         if load == False:
             pass
         else:
