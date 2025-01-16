@@ -6,9 +6,6 @@ xml_directory = "./data"
 timestampFile = "./lastModified"
 class Schema:
     def __init__(self):
-        self.conn = sqlite3.connect('PLZ.db')
-        cursor = self.conn.cursor()
-        cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='PLZ';")
         # Initialisiere die Variable, um das neueste Änderungsdatum zu speichern
         latest_mod_time = 0
 
@@ -33,14 +30,17 @@ class Schema:
                 load = False
         else:
             load = True
-
+        self.conn = sqlite3.connect('PLZ.db')
+        cursor = self.conn.cursor()
         if load == False:
             pass
         else:
+            self.delete_table()
             self.create_plz_table()
             self.init_from_data()
             with open(timestampFile, 'w') as f:
                 f.write(str(latest_mod_time))
+
 
     def create_plz_table(self):
         print("Create Table...")
@@ -49,6 +49,13 @@ class Schema:
                 PLZ INTEGER PRIMARY KEY,
                 PV INTEGER        
             );
+        """
+        self.conn.execute(query)
+
+    def delete_table(self):
+        print("Delete Table...")
+        query = """
+            DROP TABLE PLZ;
         """
         self.conn.execute(query)
 
