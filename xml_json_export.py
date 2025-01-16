@@ -37,13 +37,32 @@ def calculate_bruttoleistung_per_postleitzahl(directory):
                         plz = einheit.find('Postleitzahl')
 
                         bruttoleistung = einheit.find('Bruttoleistung')
+                        id = einheit.find('EinheitMastrNummer')
 
                         if plz is not None and bruttoleistung is not None:
                             try:
-                                #Leistung in Text mit Tausenderpunkt wird fehlerhaft als dezimal punkt interpretiert
-                                leistung = bruttoleistung.text.replace('.','')
+                                leistung = float(bruttoleistung.text)
+                                if leistung > 40000:  # Leistung über 40000 kW
+                                    user_input = input(f"\nDie Bruttoleistung {leistung} kW, der Anlage {id.text} aus File {filename}, ist größer als 40.000 kW. Möchten Sie diese Leistung akzeptieren? (y/n): ").strip().lower()
+                                    if user_input != 'y':
+                                        while 1:
+                                            user_input = input(f"Angepasst übernehmen? ('Zahl xxx.xx'/n)").strip().lower()
+                                            if user_input == 'n':
+                                                print(f"Die Bruttoleistung {leistung} kW wurde verworfen.")
+                                                break  # Überspringe diesen Eintrag
+                                            else:
+                                                try:
+                                                    leistung = float(user_input)
+                                                    print(f"Wurde als {leistung} kW übernommen.")
+                                                    bruttoleistung_per_plz[plz.text] += leistung
+                                                    break
+                                                except ValueError:
+                                                    print(f"Ungültige Eingabe")
+                                    else:
+                                        bruttoleistung_per_plz[plz.text] += leistung
+                                else:
+                                    bruttoleistung_per_plz[plz.text] += leistung
 
-                                bruttoleistung_per_plz[plz.text] += float(leistung)
                             except ValueError:
                                 print(f"Ungültige Bruttoleistung in Datei {filename}: {bruttoleistung.text}")
             counter+=1
