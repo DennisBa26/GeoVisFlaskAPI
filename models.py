@@ -32,10 +32,14 @@ class Schema:
             load = True
         self.conn = sqlite3.connect('PLZ.db')
         cursor = self.conn.cursor()
+        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='PLZ';")
+        result = cursor.fetchone()
+        self.conn.close()
         if load == False:
             pass
         else:
-            self.delete_table()
+            if result:
+                self.delete_table()
             self.create_plz_table()
             self.init_from_data()
             with open(timestampFile, 'w') as f:
